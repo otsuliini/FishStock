@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Chess Engine",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "src/*.cpp",
+                "-o", "build/FishStock",
+                "-I", "C:/Users/otsor/Downloads/SFML-2.6.2-windows-gcc-13.1.0-mingw-64-bit (1)/SFML-2.6.2/include",
+                "-L", "C:/Users/otsor/Downloads/SFML-2.6.2-windows-gcc-13.1.0-mingw-64-bit (1)/SFML-2.6.2/lib",
+                "-lsfml-graphics",
+                "-lsfml-window",
+                "-lsfml-system"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Compiles and links the chess engine project"
+        }
+    ]        
+}
