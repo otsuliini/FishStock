@@ -60,8 +60,20 @@
         <mxCell id="6Yib5U76KsZDdD50bOUT-23" value="Legal Moves" style="whiteSpace=wrap;html=1;rounded=1;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="164" y="260" width="80" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="6Yib5U76KsZDdD50bOUT-28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="6Yib5U76KsZDdD50bOUT-25" target="6Yib5U76KsZDdD50bOUT-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6Yib5U76KsZDdD50bOUT-31" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="6Yib5U76KsZDdD50bOUT-25" target="6Yib5U76KsZDdD50bOUT-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="6Yib5U76KsZDdD50bOUT-25" value="Board Reporsentation" style="rhombus;whiteSpace=wrap;html=1;rounded=1;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="304" y="130" width="146" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="6Yib5U76KsZDdD50bOUT-27" value="GUI" style="whiteSpace=wrap;html=1;rounded=1;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="154" y="180" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="6Yib5U76KsZDdD50bOUT-30" value="2D Array" style="whiteSpace=wrap;html=1;rounded=1;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="284" y="40" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
