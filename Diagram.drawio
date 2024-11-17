@@ -55,7 +55,7 @@
           <mxGeometry x="274" y="490" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="6Yib5U76KsZDdD50bOUT-21" value="Depth" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;shadow=0;strokeWidth=1;spacing=6;spacingTop=-4;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="144" y="520" width="120" height="80" as="geometry" />
+          <mxGeometry x="144" y="390" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="6Yib5U76KsZDdD50bOUT-23" value="Legal Moves" style="whiteSpace=wrap;html=1;rounded=1;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="164" y="260" width="80" height="60" as="geometry" />
