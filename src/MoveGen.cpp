@@ -18,13 +18,21 @@ int genPawnMoves(bool turn, int x, int y) { // false = white, true = black
         std::string collor = "white";	
     }
     // move one forward
-    if (board.board[x + direction][y] == ' ') {
-        board.board[x + direction][y] = board.board[x][y];
-        board.board[x][y] = ' ';
+    if (board.board[x + direction][y] == ' ') { // if square empty
+        board.board[x + direction][y] = board.board[x][y]; // moves piece from old square to new square and renames the new square as the old square aka 'rook'
+        board.board[x][y] = ' '; // clears old square
     }
 
     // move 2 forward if first move
+    
+    if (x == 1 || x == 6) {
+            if (board.board[x + direction * 2][y] == ' ') { // if square empty
+            board.board[x + direction * 2][y] = board.board[x][y]; // moves piece from old square to new square and renames the new square as the old square aka 'rook'
+            board.board[x][y] = ' '; // clears old square
+        }
+    }
     // capture right
+    
     // capture left
     return 0;
 }
