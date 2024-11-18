@@ -1,7 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <movegen.cpp>
-
+#include <chessboard.hpp>
+#include <Evaluate.cpp>
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "My window");

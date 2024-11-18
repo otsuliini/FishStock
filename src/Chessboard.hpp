@@ -1,3 +1,5 @@
+#ifndef CHESSBOARD_HPP
+#define CHESSBOARD_HPP
 #include <iostream>
 
 class Chessboard {
@@ -14,11 +16,12 @@ public:
     };
 
     void printBoard() {
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
+        for (int i = 0; i < 8; i++) { // rows
+            for (int j = 0; j < 8; j++) { // columns
                 std::cout << board[i][j] << " ";
             }
             std::cout << std::endl;
         }
-    }
+    } 
 };
+#endif // CHESSBOARD_HPP
