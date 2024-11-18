@@ -5,10 +5,11 @@
 #include <Chessboard.hpp>
 
 
-int genPawnMoves(bool turn, int x, int y) { // false = white, true = black
+std::vector<std::string> genPawnMoves(bool turn, int startx, int starty) { // false = white, true = black
     // Fuck my life
     Chessboard board;
     int direction;
+    std::vector<std::string> moves;
     if (turn == true) {
         direction = -1;
         std::string collor = "black";
@@ -18,23 +19,24 @@ int genPawnMoves(bool turn, int x, int y) { // false = white, true = black
         std::string collor = "white";	
     }
     // move one forward
-    if (board.board[x + direction][y] == ' ') { // if square empty
-        board.board[x + direction][y] = board.board[x][y]; // moves piece from old square to new square and renames the new square as the old square aka 'rook'
-        board.board[x][y] = ' '; // clears old square
+    if (board.board[startx + direction][starty] == ' ') { // if square empty
+        board.board[startx + direction][starty] = board.board[x][y]; // moves piece from old square to new square and renames the new square as the old square aka 'rook'
+        board.board[startx][starty] = ' '; // clears old square
+        moves.push_back(startx + direction + " " + starty); // adds move to vector (nerd talk for saves the generated move)
     }
 
     // move 2 forward if first move
     
-    if (x == 1 || x == 6) {
-            if (board.board[x + direction * 2][y] == ' ') { // if square empty
-            board.board[x + direction * 2][y] = board.board[x][y]; // moves piece from old square to new square and renames the new square as the old square aka 'rook'
-            board.board[x][y] = ' '; // clears old square
+    if (startx == 1 || startx == 6) {
+            if (board.board[startx + direction * 2][starty] == ' ') { // if square empty
+            board.board[startx + direction * 2][starty] = board.board[startx][starty]; // moves piece from old square to new square and renames the new square as the old square aka 'rook'
+            board.board[startx][starty] = ' '; // clears old square
         }
     }
     // capture right
     
     // capture left
-    return 0;
+    return moves;
 }
 
 int genKnightMoves() {
