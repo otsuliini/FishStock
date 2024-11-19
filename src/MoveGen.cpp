@@ -40,8 +40,11 @@ std::vector<std::string> genPawnMoves(bool turn, int startx, int starty) { // fa
     }
     if (starty - 1 > -1) {
         if (board.board[startx + direction][starty - 1] != ' ') {
-        
-    }}
+            if (board.board[startx + direction][starty - 1] != collor[0]) {
+                moves.push_back(startx + direction + " " + starty - 1);
+            }
+        }
+    }
     return moves;
 }
 
