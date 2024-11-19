@@ -38,12 +38,15 @@ std::vector<std::string> genPawnMoves(bool turn, int startx, int starty) { // fa
             moves.push_back(startx + direction + " " + starty + 1);
         }
     }
-    if (starty - 1 > -1) {
+    else if (starty - 1 > -1) {
         if (board.board[startx + direction][starty - 1] != ' ') {
             if (board.board[startx + direction][starty - 1] != collor[0]) {
                 moves.push_back(startx + direction + " " + starty - 1);
             }
         }
+    }
+    else {
+        std::cout << "error";
     }
     return moves;
 }
