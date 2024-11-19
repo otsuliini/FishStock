@@ -10,6 +10,7 @@ std::vector<std::string> genPawnMoves(bool turn, int startx, int starty) { // fa
     Chessboard board;
     int direction;
     std::vector<std::string> moves;
+    std::string collor;
     if (turn == true) {
         direction = -1;
         std::string collor = "black";
@@ -20,8 +21,6 @@ std::vector<std::string> genPawnMoves(bool turn, int startx, int starty) { // fa
     }
     // move one forward
     if (board.board[startx + direction][starty] == ' ') { // if square empty
-        board.board[startx + direction][starty] = board.board[x][y]; // moves piece from old square to new square and renames the new square as the old square aka 'rook'
-        board.board[startx][starty] = ' '; // clears old square
         moves.push_back(startx + direction + " " + starty); // adds move to vector (nerd talk for saves the generated move)
     }
 
@@ -29,13 +28,20 @@ std::vector<std::string> genPawnMoves(bool turn, int startx, int starty) { // fa
     
     if (startx == 1 || startx == 6) {
             if (board.board[startx + direction * 2][starty] == ' ') { // if square empty
-            board.board[startx + direction * 2][starty] = board.board[startx][starty]; // moves piece from old square to new square and renames the new square as the old square aka 'rook'
-            board.board[startx][starty] = ' '; // clears old square
+            moves.push_back(startx + direction * 2 + " " + starty); // adds move to vector (nerd talk for saves the generated move)
+        } // i think it might actually work
+    }
+    
+    // capture
+    if (starty + 1 < 8) {
+        if (board.board[startx + direction][starty + 1] != ' ' && board.board[startx + direction][starty + 1] != collor[0]) {
+            moves.push_back(startx + direction + " " + starty + 1);
         }
     }
-    // capture right
-    
-    // capture left
+    if (starty - 1 > -1) {
+        if (board.board[startx + direction][starty - 1] != ' ') {
+        
+    }}
     return moves;
 }
 
