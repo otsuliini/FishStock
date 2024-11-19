@@ -1,2 +1,2 @@
 Tasks to make: Make pawn captures, promotions and en passant. DONE
-Make GenKnighMoves, and then if ur rly feeling it make the nigh captures too. 
+Make GenKnighMoves, and then if ur rly feeling it make the nigh captures too. DONE
