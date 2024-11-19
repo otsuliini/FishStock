@@ -31,7 +31,7 @@ std::vector<std::string> genPawnMoves(bool turn, int startx, int starty) { // fa
             moves.push_back(startx + direction * 2 + " " + starty); // adds move to vector (nerd talk for saves the generated move)
         } // i think it might actually work
     }
-    
+
     // capture
     if (starty + 1 < 8) {
         if (board.board[startx + direction][starty + 1] != ' ' && board.board[startx + direction][starty + 1] != collor[0]) {
@@ -53,7 +53,7 @@ std::vector<std::string> genPawnMoves(bool turn, int startx, int starty) { // fa
 
 int genKnightMoves() {
     
-    return 0;
+    return 0;  
 }
 
 int genBishopMoves() {
