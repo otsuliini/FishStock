@@ -23,5 +23,9 @@ public:
             std::cout << std::endl;
         }
     } 
+
+    std::pair<int, int> Get_Position(char piece) {) {
+        
+    }
 };
 #endif // CHESSBOARD_HPP
