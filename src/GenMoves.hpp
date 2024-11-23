@@ -16,5 +16,5 @@ std::vector<std::string> genBishopMoves(bool turn, int startx, int starty) ;
 std::vector<std::string> genRookMoves(bool turn, int startx, int starty) ;
 std::vector<std::string> genQueenMoves(bool turn, int startx, int starty) ;
 std::vector<std::string> genKingMoves(bool turn, int startx, int starty);
-}
+
 #endif
