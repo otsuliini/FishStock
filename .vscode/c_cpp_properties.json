@@ -5,7 +5,8 @@
             "includePath": [
                 "${workspaceFolder}/src",
                 "C:/Users/otsor/Downloads/SFML-2.6.1-windows-vc17-64-bit (1)/SFML-2.6.1/include",
-                "${workspaceFolder}/Important stuff that will make me better"
+                "${workspaceFolder}/Important stuff that will make me better",
+                "${workspaceFolder}/src"
             ],
             "defines": [],
             "compilerPath": "C:/msys64/mingw64/bin/g++.exe",

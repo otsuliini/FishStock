@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <Chessboard.hpp>
 #include <fortnite.c>   
+#include <GenMoves.hpp>
+
 // IMPORTANT: turn = false = white, true = black 
 
 std::vector<std::string> genPawnMoves(bool turn, int startx, int starty) { 
@@ -238,6 +240,7 @@ std::vector<std::string> genQueenMoves(bool turn, int startx, int starty); {
     return moves;
 }
 
+
 std::vector<std::string>  genKingMoves(bool turn, int startx, int starty); {
     std::string color;
     if (turn == true) {
@@ -274,9 +277,3 @@ std::vector<std::string>  genKingMoves(bool turn, int startx, int starty); {
     return moves;
 }// I just fucking ended this kids whole carreer blud is cooked, take the fucking LLLL. 
 
-std::vector<std::string> generate_all_moves() {
-
-    return moves;
-}
-
-    

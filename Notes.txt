@@ -1,2 +1,20 @@
-Tasks to make: Make pawn captures, promotions and en passant. DONE
-Make GenKnighMoves, and then if ur rly feeling it make the nigh captures too. DONE
+IMPORTANT TURN FALSE = WHITE ELSE IT IS BLACK
+def generate_all_legal_moves(board, color):
+    legal_moves = []
+    for x in range(8):
+        for y in range(8):
+            piece = board[x][y]
+            if piece != ' ' and (piece.isupper() if color == 'white' else piece.islower()):
+                if piece == 'P':
+                    legal_moves += generate_pawn_moves(board, x, y, color)
+                elif piece == 'N':
+                    legal_moves += generate_knight_moves(board, x, y, color)
+                elif piece == 'B':
+                    legal_moves += generate_bishop_moves(board, x, y, color)
+                elif piece == 'R':
+                    legal_moves += generate_rook_moves(board, x, y, color)
+                elif piece == 'Q':
+                    legal_moves += generate_queen_moves(board, x, y, color)
+                elif piece == 'K':
+                    legal_moves += generate_king_moves(board, x, y, color)
+    return legal_moves

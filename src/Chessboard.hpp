@@ -1,7 +1,7 @@
 #ifndef CHESSBOARD_HPP
 #define CHESSBOARD_HPP
 #include <iostream>
-
+#include <utility>
 class Chessboard {
 public:
     char board[8][8]{
@@ -21,11 +21,22 @@ public:
                 std::cout << board[i][j] << " ";
             }
             std::cout << std::endl;
+            return;
         }
     } 
+    
+    std::pair<int, int> Get_Position(char piece)  {
+        for (int i = 0; i < 8; i++){
+            for (int j = 0; j < 8; j++){
+                if (board[i][j] == piece){
+                    int piecePositionX = i;
+                    int piecePositionY = j;
+                    return std::make_pair(piecePositionX, piecePositionY);
 
-    std::pair<int, int> Get_Position(char piece) {) {
-        
+                }
+            } 
+        }
+        return std::make_pair(-1, -1);
     }
 };
 #endif // CHESSBOARD_HPP
