@@ -156,124 +156,96 @@ std::vector<std::string> genRookMoves(bool turn, int startx, int starty) {
             break;
         }
     }
-}   
-        
-
-std::vector<std::string> genQueenMoves(bool turn, int startx, int starty); {
+    return moves;
     
+}
+
+std::vector<std::string> genQueenMoves(bool turn, int startx, int starty) {
+
 
     const int BOARD_SIZE = 8;
     Chessboard board;
-    int directions[4][2] = {{-1, -1}, {-1, 1}, {1, -1}, {1, 1}};
     std::vector<std::string> moves;
-    std::string color;
-    if (turn == true) {
-        std::string color = "black";
-    }
-    else {
-        std::string color = "white";	
-    }
+    std::string color = turn ? "black" : "white";
 
 
-    // Check if startx and starty are within bounds
+    int directions[8][2] = {
+        {-1, -1}, {-1, 1}, {1, -1}, {1, 1},  // Diagonals
+        {0, -1}, {0, 1}, {-1, 0}, {1, 0}     // Horizontal and vertical
+    };
+
+
     if (startx < 0 || startx >= BOARD_SIZE || starty < 0 || starty >= BOARD_SIZE) {
-        // Handle out-of-bounds error
         return moves;
     }
 
-    // Generate moves in each direction
-    for (int i = 0; i < 4; i++) {
-        for (int j = 1; j < BOARD_SIZE; j++) {
+
+    for (int i = 0; i < 8; i++) {
+        for (int j = 1; j < BOARD_SIZE; j++) { 
             int newX = startx + directions[i][0] * j;
             int newY = starty + directions[i][1] * j;
 
             // Check if newX and newY are within bounds
             if (newX < 0 || newX >= BOARD_SIZE || newY < 0 || newY >= BOARD_SIZE) {
-                break;
+                break; // Stop if out of bounds
             }
 
-            if (board.board[newX][newY] == ' ') { // Normal Moves
+            // Check if there is a piece in the way
+            char target = board.board[newX][newY];
+            if (target == ' ') {
+                // Normal move
                 moves.push_back(std::to_string(newX) + " " + std::to_string(newY));
-            } else if (board.board[newX][newY] != ' ' && board.board[newX][newY] != color[0]) { // Captures
-                moves.push_back(std::to_string(newX) + " " + std::to_string(newY));
-                break;
+            } else {
+                // Capture move if target is opposite color
+                if ((turn && islower(target)) || (!turn && isupper(target))) {
+                    moves.push_back(std::to_string(newX) + " " + std::to_string(newY));
+                }
+                break; // Stop further movement in this direction
             }
-        }
-    }
-
-    // Generate horizontal moves and takes
-    for (int i = 0; i < BOARD_SIZE; i++) {
-        int newX = startx;
-        int newY = starty + i;
-
-        // Check if newX and newY are within bounds
-        if (newY < 0 || newY >= BOARD_SIZE) {
-            break;
-        }
-
-        if (board.board[newX][newY] == ' ') {
-            moves.push_back(std::to_string(newX) + " " + std::to_string(newY));
-        } else if (board.board[newX][newY] != ' ' && board.board[newX][newY] != color[0]) {
-            moves.push_back(std::to_string(newX) + " " + std::to_string(newY));
-            break;
-        }
-    }
-
-    // Generate vertical moves and takes
-    for (int i = 0; i < BOARD_SIZE; i++) {
-        int newX = startx + i;
-        int newY = starty;
-
-        // Check if newX and newY are within bounds
-        if (newX < 0 || newX >= BOARD_SIZE) {
-            break;
-        }
-
-        if (board.board[newX][newY] == ' ') {
-            moves.push_back(std::to_string(newX) + " " + std::to_string(newY));
-        } else if (board.board[newX][newY] != ' ' && board.board[newX][newY] != color[0]) {
-            moves.push_back(std::to_string(newX) + " " + std::to_string(newY));
-            break;
         }
     }
 
     return moves;
 }
 
+    std::vector<std::string>  genKingMoves(bool turn, int startx, int starty) {
+        Chessboard board;   
+        std::string color;
+        if (turn == true) {
+            std::string color = "black";
+        }
+        else {
+            std::string color = "white";	
+        }
 
-std::vector<std::string>  genKingMoves(bool turn, int startx, int starty); {
-    std::string color;
-    if (turn == true) {
-        std::string color = "black";
-    }
-    else {
-        std::string color = "white";	
+        if (board.board[startx + 1][starty] == ' ' || board.board[startx + 1][starty] != color[0]){
+            moves.push_back(startx + 1 + " " + starty);
+        }
+        else if (board.board[startx - 1][starty] == ' ' || board.board[startx - 1][starty] != color[0]){
+            moves.push_back(startx - 1 + " " + starty);
+        }
+        else if (board.board[startx][starty + 1] == ' ' || board.board[startx][starty + 1] != color[0]){
+            moves.push_back(startx + " " + starty + 1);
+        }
+        else if (board.board[startx][starty - 1] == ' ' || board.board[startx][starty - 1] != color[0]){
+            moves.push_back(startx + " " + starty - 1);
+        }
+        else if (board.board[startx + 1][starty + 1] == ' ' || board.board[startx + 1][starty + 1] != color[0]){
+            moves.push_back(startx + 1 + " " + starty + 1);
+        }
+        else if (board.board[startx + 1][starty - 1] == ' ' || board.board[startx + 1][starty - 1] != color[0]){
+            moves.push_back(startx + 1 + " " + starty - 1);
+        }
+        else if (board.board[startx - 1][starty + 1] == ' ' || board.board[startx - 1][starty + 1] != color[0]){
+            moves.push_back(startx - 1 + " " + starty + 1);
+        }
+        else if (board.board[startx - 1][starty - 1] == ' ' || board.board[startx - 1][starty - 1] != color[0]){
+            moves.push_back(startx - 1 + " " + starty - 1);
+        }
+        return moves; 
     }
 
-    if (board.board[startx + 1][starty] == ' ' || board.board[startx + 1][starty] != color[0]){
-        moves.push_back(startx + 1 + " " + starty);
-    }
-    else if (board.board[startx - 1][starty] == ' ' || board.board[startx - 1][starty] != color[0]){
-        moves.push_back(startx - 1 + " " + starty);
-    }
-    else if (board.board[startx][starty + 1] == ' ' || board.board[startx][starty + 1] != color[0]){
-        moves.push_back(startx + " " + starty + 1);
-    }
-    else if (board.board[startx][starty - 1] == ' ' || board.board[startx][starty - 1] != color[0]){
-        moves.push_back(startx + " " + starty - 1);
-    }
-    else if (board.board[startx + 1][starty + 1] == ' ' || board.board[startx + 1][starty + 1] != color[0]){
-        moves.push_back(startx + 1 + " " + starty + 1);
-    }
-    else if (board.board[startx + 1][starty - 1] == ' ' || board.board[startx + 1][starty - 1] != color[0]){
-        moves.push_back(startx + 1 + " " + starty - 1);
-    }
-    else if (board.board[startx - 1][starty + 1] == ' ' || board.board[startx - 1][starty + 1] != color[0]){
-        moves.push_back(startx - 1 + " " + starty + 1);
-    }
-    else if (board.board[startx - 1][starty - 1] == ' ' || board.board[startx - 1][starty - 1] != color[0]){
-        moves.push_back(startx - 1 + " " + starty - 1);
-    }
-    return moves;
-}// I just fucking ended this kids whole carreer blud is cooked, take the fucking LLLL. 
+        
+
+// I just fucking ended this kids whole carreer blud is cooked, take the fucking LLLL. 
 
