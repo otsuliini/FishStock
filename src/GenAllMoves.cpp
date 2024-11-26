@@ -2,9 +2,9 @@
 #include <vector>
 #include <string>   
 #include <algorithm>
-#include <Chessboard.hpp>
-#include <fortnite.c>  
-#include <MoveGen.cpp>
+#include "Chessboard.hpp"
+#include "GenMoves.hpp"
+
 
 
 

@@ -2,10 +2,10 @@
 #include <vector>
 #include <string>   
 #include <algorithm>
-#include <Chessboard.hpp>
-#include <fortnite.c>   
-#include <GenMoves.hpp>
-#include <GenAllMoves.cpp>
+#include "Chessboard.hpp"
+#include "GenMoves.hpp"
+
+
 // IMPORTANT: turn = false = white, true = black 
 
 std::vector<std::string> genPawnMoves(bool turn, int startx, int starty) { 
@@ -126,38 +126,43 @@ std::vector<std::string> genBishopMoves(bool turn, int startx, int starty) {
     return moves;
 }
 
-std::vector<std::string> genRookMoves(bool turn, int startx, int starty) { 
+std::vector<std::string> genRookMoves(bool turn, int startx, int starty) {
     Chessboard board;
     const int BOARD_SIZE = 8;
     std::vector<std::string> moves;
     std::string color;
+    
+    // Correcting color assignment
     if (turn == true) {
-        std::string color = "black";
+        color = "black";  // Assign to the outer color variable
     }
     else {
-        std::string color = "white";	
+        color = "white";  // Assign to the outer color variable
     }
 
-    for (int i = 0; i < BOARD_SIZE; i++){// horizontal moves and takes
-        if (board.board[startx][starty + i] == ' '){
-            moves.push_back(startx + " " + starty + i);
+    // Horizontal moves
+    for (int i = 0; i < BOARD_SIZE; i++) {
+        if (starty + i < BOARD_SIZE && board.board[startx][starty + i] == ' ') {
+            moves.push_back(std::to_string(startx) + " " + std::to_string(starty + i));
         }
-        else if (board.board[startx][starty + i] != ' ' && board.board[startx][starty + i] != color[0]){
-            moves.push_back(startx + " " + starty + i);
-            break;
-        }
-    
-    for (int i = 0; i < 8; i++){ // vertical moves and takes
-        if (board.board[startx + i][starty] == ' '){
-            moves.push_back(startx + i + " " + starty);
-        }
-        else if (board.board[startx + i][starty] != ' ' && board.board[startx + i][starty] != color[0]){
-            moves.push_back(startx + i + " " + starty);
+        else if (starty + i < BOARD_SIZE && board.board[startx][starty + i] != ' ' && board.board[startx][starty + i] != color[0]) {
+            moves.push_back(std::to_string(startx) + " " + std::to_string(starty + i));
             break;
         }
     }
+
+    // Vertical moves
+    for (int i = 0; i < BOARD_SIZE; i++) {
+        if (startx + i < BOARD_SIZE && board.board[startx + i][starty] == ' ') {
+            moves.push_back(std::to_string(startx + i) + " " + std::to_string(starty));
+        }
+        else if (startx + i < BOARD_SIZE && board.board[startx + i][starty] != ' ' && board.board[startx + i][starty] != color[0]) {
+            moves.push_back(std::to_string(startx + i) + " " + std::to_string(starty));
+            break;
+        }
+    }
+
     return moves;
-    
 }
 
 std::vector<std::string> genQueenMoves(bool turn, int startx, int starty) {
@@ -208,44 +213,38 @@ std::vector<std::string> genQueenMoves(bool turn, int startx, int starty) {
     return moves;
 }
 
-    std::vector<std::string>  genKingMoves(bool turn, int startx, int starty) {
-        Chessboard board;   
-        std::string color;
-        if (turn == true) {
-            std::string color = "black";
-        }
-        else {
-            std::string color = "white";	
-        }
 
-        if (board.board[startx + 1][starty] == ' ' || board.board[startx + 1][starty] != color[0]){
-            moves.push_back(startx + 1 + " " + starty);
-        }
-        else if (board.board[startx - 1][starty] == ' ' || board.board[startx - 1][starty] != color[0]){
-            moves.push_back(startx - 1 + " " + starty);
-        }
-        else if (board.board[startx][starty + 1] == ' ' || board.board[startx][starty + 1] != color[0]){
-            moves.push_back(startx + " " + starty + 1);
-        }
-        else if (board.board[startx][starty - 1] == ' ' || board.board[startx][starty - 1] != color[0]){
-            moves.push_back(startx + " " + starty - 1);
-        }
-        else if (board.board[startx + 1][starty + 1] == ' ' || board.board[startx + 1][starty + 1] != color[0]){
-            moves.push_back(startx + 1 + " " + starty + 1);
-        }
-        else if (board.board[startx + 1][starty - 1] == ' ' || board.board[startx + 1][starty - 1] != color[0]){
-            moves.push_back(startx + 1 + " " + starty - 1);
-        }
-        else if (board.board[startx - 1][starty + 1] == ' ' || board.board[startx - 1][starty + 1] != color[0]){
-            moves.push_back(startx - 1 + " " + starty + 1);
-        }
-        else if (board.board[startx - 1][starty - 1] == ' ' || board.board[startx - 1][starty - 1] != color[0]){
-            moves.push_back(startx - 1 + " " + starty - 1);
-        }
-        return moves; 
+std::vector<std::string>  genKingMoves(bool turn, int startx, int starty) {
+    Chessboard board;   
+    std::string color = turn ? "black" : "white";
+    std::vector<std::string> moves;
+
+    if (board.board[startx + 1][starty] == ' ' || board.board[startx + 1][starty] != color[0]){
+        moves.push_back(startx + 1 + " " + starty);
     }
+    else if (board.board[startx - 1][starty] == ' ' || board.board[startx - 1][starty] != color[0]){
+        moves.push_back(startx - 1 + " " + starty);
+    }
+    else if (board.board[startx][starty + 1] == ' ' || board.board[startx][starty + 1] != color[0]){
+        moves.push_back(startx + " " + starty + 1);
+    }
+    else if (board.board[startx][starty - 1] == ' ' || board.board[startx][starty - 1] != color[0]){
+        moves.push_back(startx + " " + starty - 1);
+    }
+    else if (board.board[startx + 1][starty + 1] == ' ' || board.board[startx + 1][starty + 1] != color[0]){
+        moves.push_back(startx + 1 + " " + starty + 1);
+    }
+    else if (board.board[startx + 1][starty - 1] == ' ' || board.board[startx + 1][starty - 1] != color[0]){
+        moves.push_back(startx + 1 + " " + starty - 1);
+    }
+    else if (board.board[startx - 1][starty + 1] == ' ' || board.board[startx - 1][starty + 1] != color[0]){
+        moves.push_back(startx - 1 + " " + starty + 1);
+    }
+    else if (board.board[startx - 1][starty - 1] == ' ' || board.board[startx - 1][starty - 1] != color[0]){
+        moves.push_back(startx - 1 + " " + starty - 1);
+    }
+    return moves; 
 
-        
-
+}
 // I just fucking ended this kids whole carreer blud is cooked, take the fucking LLLL. 
 
