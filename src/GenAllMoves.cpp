@@ -3,8 +3,10 @@
 #include <string>   
 #include <algorithm>
 #include <Chessboard.hpp>
-#include <fortnite.c>   
-#include <src/MoveGen.cpp>
+#include <fortnite.c>  
+#include <MoveGen.cpp>
+
+
 
 std::vector<std::string> generateAllMoves(bool turn) {
     Chessboard board;

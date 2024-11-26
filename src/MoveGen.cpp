@@ -5,7 +5,7 @@
 #include <Chessboard.hpp>
 #include <fortnite.c>   
 #include <GenMoves.hpp>
-
+#include <GenAllMoves.cpp>
 // IMPORTANT: turn = false = white, true = black 
 
 std::vector<std::string> genPawnMoves(bool turn, int startx, int starty) { 
