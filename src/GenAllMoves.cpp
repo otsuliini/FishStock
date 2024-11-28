@@ -26,21 +26,36 @@ std::vector<std::string> generateAllMoves(bool turn) {
                piececolor = "white";	
 
                switch (piece) {
+                    case 'P':
+                        pieceMoves = genPawnMoves(turn, x, y);
+                        std::cout << "white pawn moves generated";
+                    break;
+
                    case 'R':
                        pieceMoves = genRookMoves(turn, x, y);
+                       std::cout << "white rook moves generated";
                        break;
+
                    case 'N':
                        pieceMoves = genKnightMoves(turn, x, y);
+                       std::cout << "white knight moves generated";
                        break;
+                       
                    case 'B':
                        pieceMoves = genBishopMoves(turn, x, y);
+                       std::cout << "white bishop moves generated";
                        break;
+
                    case 'Q':
                        pieceMoves = genQueenMoves(turn, x, y);
+                       std::cout << "white queen moves generated";
                        break;
+
                    case 'K':
                        pieceMoves = genKingMoves(turn, x, y);
+                       std::cout << "white king moves generated";
                        break;
+
                    default:
                        std::cout << "error in generateAllMoves (WHITE piece)";
                        break;
@@ -49,23 +64,38 @@ std::vector<std::string> generateAllMoves(bool turn) {
            else if (islower(piece)) {
                piececolor = "black";
                switch (piece) {
+                   case 'p':
+                       pieceMoves = genPawnMoves(turn, x, y);
+                       std::cout << "black pawn moves generated";
+                       break;
+
                    case 'r':
                        pieceMoves = genRookMoves(turn, x, y);
+                       std::cout << "black rook moves generated";
                        break;
+
                    case 'n':
                        pieceMoves = genKnightMoves(turn, x, y);
+                       std::cout << "black knight moves generated";
                        break;
+
                    case 'b':
                        pieceMoves = genBishopMoves(turn, x, y);
+                       std::cout << "black bishop moves generated";
                        break;
+
                    case 'q':
                        pieceMoves = genQueenMoves(turn, x, y);
+                       std::cout << "black queen moves generated";
                        break;
+
                    case 'k':
                        pieceMoves = genKingMoves(turn, x, y);
+                       std::cout << "black king moves generated";
                        break;
+
                    default:
-                       std::cout << "error";
+                       std::cout << "error in generating black moves";
                        break;
                }
            }
@@ -77,7 +107,6 @@ std::vector<std::string> generateAllMoves(bool turn) {
 
             // Add the generated moves to the allMoves vector
             allMoves.insert(allMoves.end(), pieceMoves.begin(), pieceMoves.end());
-        
     }
     
     return allMoves;
