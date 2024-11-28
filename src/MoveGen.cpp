@@ -22,7 +22,7 @@ std::vector<std::string> genPawnMoves(bool turn, int startx, int starty) {
         direction = 1;  
         std::string color = "white";	
     }
-    // move one forward
+    // move one forward 
     if (board.board[startx + direction][starty] == ' ') { // if square empty
         moves.push_back(startx + direction + " " + starty); // adds move to vector (nerd talk for saves the generated move)
     }
@@ -33,7 +33,7 @@ std::vector<std::string> genPawnMoves(bool turn, int startx, int starty) {
             if (board.board[startx + direction * 2][starty] == ' ') { // if square empty
             moves.push_back(startx + direction * 2 + " " + starty); // adds move to vector (nerd talk for saves the generated move)
         }   
-    }
+    } 
     //captures 
     if (starty + 1 < 8) {
         if (board.board[startx + direction][starty + 1] != ' ' && board.board[startx + direction][starty + 1] != collor[0]) {
@@ -95,7 +95,7 @@ std::vector<std::string> genKnightMoves(bool turn, int startx, int starty) {
 
 std::vector<std::string> genBishopMoves(bool turn, int startx, int starty) {
     Chessboard board;
-    int directions[4][2] = {{-1, -1}, {-1, 1}, {1, -1}, {1, 1}};
+    int directions[4][2] = {{1, 1}, {1, -1}, {-1, 1}, {-1, -1}};
     std::vector<std::string> moves;
     std::string color;
     const int BOARD_SIZE = 8;
@@ -242,7 +242,7 @@ std::vector<std::string>  genKingMoves(bool turn, int startx, int starty) {
     }
     else if (board.board[startx - 1][starty - 1] == ' ' || board.board[startx - 1][starty - 1] != color[0]){
         moves.push_back(startx - 1 + " " + starty - 1);
-    }
+    }   
     return moves; 
 
 }
