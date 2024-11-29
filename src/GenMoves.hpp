@@ -5,7 +5,7 @@
 #include <string>
 
 // Function declarations for generating chess moves
-std::vector<std::string> generateAllMoves(bool turn);
+std::vector<Move> generateAllMoves(bool turn);
 std::vector<std::string> genPawnMoves(bool turn, int startx, int starty);
 std::vector<std::string> genKnightMoves(bool turn, int startx, int starty);
 std::vector<std::string> genBishopMoves(bool turn, int startx, int starty);

@@ -6,10 +6,11 @@
 #include <cctype> // for isupper, islower
 #include "Chessboard.hpp"
 #include "GenMoves.hpp"
+#include <sstream> // For parsing move strings
 
-std::vector<std::string> generateAllMoves(bool turn) {
+std::vector<Move> generateAllMoves(bool turn) {
     Chessboard board;
-    std::vector<std::string> allMoves;
+    std::vector<Move> allMoves; // Change to store Move objects
     
     const int BOARD_SIZE = 8;
     char playerColor = turn ? 'w' : 'b';
@@ -26,7 +27,6 @@ std::vector<std::string> generateAllMoves(bool turn) {
             switch (tolower(piece)) {
                 case 'p':
                     pieceMoves = genPawnMoves(turn, x, y);
-                    Move Move( x, y, x, y, board ); 
                     break;
                 case 'r':
                     pieceMoves = genRookMoves(turn, x, y);
@@ -48,8 +48,15 @@ std::vector<std::string> generateAllMoves(bool turn) {
                     continue;
             }
 
-            // Append generated moves
-            allMoves.insert(allMoves.end(), pieceMoves.begin(), pieceMoves.end());
+            // Convert pieceMoves strings to Move objects
+            for (const std::string& moveStr : pieceMoves) {
+                std::istringstream iss(moveStr); // Parse the move string
+                int endX, endY;
+                iss >> endX >> endY;
+
+                // Create the Move object and store it
+                allMoves.emplace_back(x, y, endX, endY, board);
+            }
         }
     }
     
