@@ -54,6 +54,7 @@ std::vector<std::string> genPawnMoves(bool turn, int startx, int starty) {
 }
 
 
+
 std::vector<std::string> genKnightMoves(bool turn, int startx, int starty) {
     Chessboard board;
     std::vector<std::string> moves;

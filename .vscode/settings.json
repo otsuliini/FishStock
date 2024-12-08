@@ -54,6 +54,7 @@
         "typeinfo": "cpp",
         "variant": "cpp",
         "*.s": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "set": "cpp"
     }
 }
