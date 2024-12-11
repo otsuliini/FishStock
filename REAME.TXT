@@ -1,0 +1,51 @@
+FishStock README
+
+Overview
+
+Welcome to FishStock, a chess engine with a graphical user interface (GUI) built in C++ by a 13-year-old chess enthusiast and programmer! This project is under active development, aiming to create a fun and functional chess engine that players of all levels can enjoy. FishStock combines solid chess mechanics with an intuitive and easy-to-use GUI.
+
+Features
+	•	Graphical User Interface (GUI): FishStock includes a clean and interactive interface for visualizing the board and making moves.
+	•	Legal Move Generation: Generates and enforces legal moves for all pieces.
+	•	Interactive Gameplay: Play as White or Black against the engine or another player locally.
+	•	Turn-Based Play: Automatically alternates turns between players.
+	•	Basic AI: The engine can play basic moves as an opponent (improving over time).
+
+Planned Features
+	•	Advanced AI: Improve the AI’s decision-making with evaluation functions and search algorithms.
+	•	Full Rule Support: Add support for special moves like castling, en passant, and promotions.
+	•	Customizable Settings: Add options for time controls, board themes, and difficulty levels.
+	•	Undo/Redo Moves: Allow users to correct mistakes or review their game.
+	•	Save/Load Games: Save game progress and resume at any time.
+	•	Online Multiplayer: Enable players to challenge friends over the internet.
+
+How to Run
+	1.	Clone the repository:
+
+git clone https://github.com/yourusername/FishStock.git
+
+
+	2.	Compile the code with a C++ compiler (e.g., g++) and any necessary libraries for the GUI:
+
+g++ -o FishStock fishstock.cpp -l<gui-library>
+
+(Replace <gui-library> with the actual library, such as SDL, SFML, or Qt, depending on the implementation.)
+
+	3.	Run the program:
+
+./FishStock
+
+
+	4.	Enjoy the game using the interactive GUI!
+
+Contributing
+
+FishStock is a learning project, so feedback, suggestions, and contributions are welcome! Feel free to fork the repository and submit pull requests.
+
+Acknowledgments
+	•	Inspired by the simplicity of coding and the complexity of chess.
+	•	Thanks to the open-source community for providing tools and libraries to build this project.
+
+Disclaimer
+
+FishStock is a beginner project under development, so expect some bugs or incomplete features. Updates will be released frequently as the engine improves!
